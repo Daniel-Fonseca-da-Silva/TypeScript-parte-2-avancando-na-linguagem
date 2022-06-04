@@ -20,9 +20,18 @@ export class NegociacaoController {
 
     public adiciona(): void {
         const negociacao = this.criaNegociacao();
-        this.negociacoes.adiciona(negociacao);
-        this.limparFormulario();
-        this.atualizaView();
+        // Vai de 0 até 6
+        // 0 é domingo!
+        // 6 é sabado!
+        if(negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6 ) {
+            console.log(negociacao);
+            console.log(negociacao.data.getDay());
+            this.negociacoes.adiciona(negociacao);
+            this.limparFormulario();
+            this.atualizaView();
+        } else {
+            this.mensagemView.update("O dia atual não é um dia útil!");
+        }
     }
 
     private criaNegociacao(): Negociacao {
