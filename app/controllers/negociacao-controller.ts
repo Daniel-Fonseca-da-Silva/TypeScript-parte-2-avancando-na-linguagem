@@ -20,7 +20,13 @@ export class NegociacaoController {
     }
 
     public adiciona(): void {
-        const negociacao = this.criaNegociacao();
+        const negocicaoTemp = new Negociacao(null, 0, 0);
+
+        const negociacao = negocicaoTemp.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value,
+        );
         // Vai de 0 até 6
         // 0 é domingo!
         // 6 é sabado!
@@ -35,13 +41,7 @@ export class NegociacaoController {
         
     }
 
-    private criaNegociacao(): Negociacao {
-        const exp = /-/g;
-        const date = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-        return new Negociacao(date, quantidade, valor);
-    }
+
 
     private limparFormulario(): void {
         this.inputData.value = '';
