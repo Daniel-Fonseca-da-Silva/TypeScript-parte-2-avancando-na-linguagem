@@ -1,10 +1,10 @@
 export enum DiasDaSemana {
     // Enum é somente leitura por padrão
-    DOMINGO,
-    SEGUNDA,
-    TERCA,
-    QUARTA,
-    QUINTA,
-    SEXTA,
-    SABADO
+    DOMINGO = 0,
+    SEGUNDA = 1,
+    TERCA = 2,
+    QUARTA = 3,
+    QUINTA = 4,
+    SEXTA = 5,
+    SABADO = 6
 }
