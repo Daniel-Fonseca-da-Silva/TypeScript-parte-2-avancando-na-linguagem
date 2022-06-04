@@ -7,6 +7,8 @@ export class NegociacaoController {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
+        this.SABADO = 6;
+        this.DOMINGO = 0;
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
@@ -17,16 +19,13 @@ export class NegociacaoController {
         // Vai de 0 até 6
         // 0 é domingo!
         // 6 é sabado!
-        if (negociacao.data.getDay() > 0 && negociacao.data.getDay() < 6) {
-            console.log(negociacao);
-            console.log(negociacao.data.getDay());
-            this.negociacoes.adiciona(negociacao);
-            this.limparFormulario();
-            this.atualizaView();
+        if (!this.ehDiaUtil(negociacao.data)) {
+            this.mensagemView.update("Deve ser um dia útil!");
+            return;
         }
-        else {
-            this.mensagemView.update("O dia atual não é um dia útil!");
-        }
+        this.negociacoes.adiciona(negociacao);
+        this.limparFormulario();
+        this.atualizaView();
     }
     criaNegociacao() {
         const exp = /-/g;
@@ -44,5 +43,8 @@ export class NegociacaoController {
     atualizaView() {
         this.negociacoesView.update(this.negociacoes);
         this.mensagemView.update('Negociação adicionada com sucesso');
+    }
+    ehDiaUtil(data) {
+        return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO;
     }
 }
