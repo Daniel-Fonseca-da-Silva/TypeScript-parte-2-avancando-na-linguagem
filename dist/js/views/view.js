@@ -1,5 +1,6 @@
 export class View {
-    constructor(seletor) {
+    constructor(seletor, escapar) {
+        this.escapar = false;
         this.elemento = document.querySelector(seletor);
     }
     update(model) {
