@@ -5,7 +5,7 @@
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true,
-        "strictNullChecks": false
+        "strictNullChecks": true
     },
     "include": ["app/**/*"]
 }
