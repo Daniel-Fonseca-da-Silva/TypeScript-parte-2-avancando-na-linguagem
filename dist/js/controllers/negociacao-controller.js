@@ -15,9 +15,6 @@ export class NegociacaoController {
     }
     adiciona() {
         const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
-        // Vai de 0 até 6
-        // 0 é domingo!
-        // 6 é sabado!
         if (!this.ehDiaUtil(negociacao.data)) {
             this.mensagemView.update("Deve ser um dia útil!");
             return;
