@@ -14,8 +14,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
     adiciona() {
-        const negocicaoTemp = new Negociacao(null, 0, 0);
-        const negociacao = negocicaoTemp.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
+        const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         // Vai de 0 até 6
         // 0 é domingo!
         // 6 é sabado!
